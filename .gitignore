@@ -1,6 +1,6 @@
 # security
-#token.txt
-#userid.txt
+token.txt
+userid.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
