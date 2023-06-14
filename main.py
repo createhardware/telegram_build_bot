@@ -14,6 +14,8 @@ TOKEN = ""
 
 USERID = ""
 
+workdir = r"C:\\"
+
 try:
     f = open("token.txt", "r")
     # print(f.read())
@@ -70,6 +72,7 @@ async def build(message: types.Message):
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             shell=True,
+            cwd=workdir
         )
     
     print("build")
@@ -90,6 +93,7 @@ async def update(message: types.Message):
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             shell=True,
+            cwd=workdir
         )
     
     print("update")
@@ -110,6 +114,7 @@ async def get_file(message: types.Message):
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             shell=True,
+            cwd=workdir
         )
     print("get file")
 
