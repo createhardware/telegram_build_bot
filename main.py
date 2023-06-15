@@ -19,6 +19,8 @@ USERID = ""
 
 workdir = r"H:\arduino_work_proj\MyHouse_kivy_app"
 
+filename_apk = r"\bin\myhouse-0.1-arm64-v8a_armeabi-v7a-debug.apk"
+
 try:
     f = open("token.txt", "r")
     # print(f.read())
@@ -53,7 +55,7 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 def get_filetime():
-    return time.time() - os.path.getmtime(workdir + r"\bin\myhouse-0.1-arm64-v8a_armeabi-v7a-debug.apk")
+    return time.time() - os.path.getmtime(workdir + filename_apk)
 
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
@@ -131,6 +133,10 @@ async def get_file(message: types.Message):
     #         shell=True,
     #         cwd=workdir
     #     )
+    
+    with open(os.path.join(workdir, filename_apk), 'rb') as file:
+         await bot.send_document(chat_id, file, disable_notification=True)
+
 
     # if platform.system() == 'Windows':
     print(get_filetime())
